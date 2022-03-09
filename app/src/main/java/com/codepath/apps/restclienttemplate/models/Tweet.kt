@@ -13,7 +13,7 @@ class Tweet {
     companion object{
         fun fromJson(jsonObject: JSONObject): Tweet{
             val tweet = Tweet()
-            tweet.body = jsonObject.getString("text")
+            tweet.body = jsonObject.getString("full_text")
             tweet.createdAt =jsonObject.getString("created_at")
             tweet.user = User.fromJson(jsonObject.getJSONObject("user"))
             tweet.timeStamp = getFormattedTimestamp(jsonObject.getString("created_at"))

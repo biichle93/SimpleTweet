@@ -8,6 +8,7 @@ import android.widget.TextView
 import androidx.appcompat.view.menu.ActionMenuItemView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.bitmap.CircleCrop
 import com.codepath.apps.restclienttemplate.models.Tweet
 
 
@@ -27,7 +28,8 @@ class TweetsAdapter(val tweets: MutableList<Tweet>): RecyclerView.Adapter<Tweets
         holder.profileName.text = tweet.user?.profileName
         holder.name.text = tweet.user?.name
         holder.timestamp.text = tweet.timeStamp
-        Glide.with(holder.itemView).load(tweet.user?.profilePictureURL).into(holder.profileImage)
+        Glide.with(holder.itemView).load(tweet.user?.profilePictureURL).transform(CircleCrop()).into(holder.profileImage)
+        //Glide.with(holder.itemView).load(tweet.user?.profilePictureURL).into(holder.profileImage)
     }
 
     override fun getItemCount(): Int {

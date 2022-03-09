@@ -59,6 +59,7 @@ class TwitterClient(context: Context) : OAuthBaseClient(
         val params = RequestParams()
         params.put("count", "25")
         params.put("since_id", 1)
+        params.put("tweet_mode", "extended")
         client.get(apiUrl, params, handler)
     }
 

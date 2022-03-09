@@ -3,6 +3,7 @@ package com.codepath.apps.restclienttemplate
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
@@ -35,6 +36,7 @@ class TimelineActivity : AppCompatActivity() {
         client = TwitterApplication.getRestClient(this)
 
         rvTweets = findViewById(R.id.rvTweets)
+        rvTweets.addItemDecoration(DividerItemDecoration(applicationContext, LinearLayoutManager.VERTICAL))
         adapter = TweetsAdapter(tweets)
         rvTweets.layoutManager = LinearLayoutManager(this)
         rvTweets.adapter = adapter

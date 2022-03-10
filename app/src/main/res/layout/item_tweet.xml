@@ -37,8 +37,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@id/tvTweet"
-        android:layout_margin="4dp"
-        android:layout_marginStart="8dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="4dp"
+        android:layout_marginBottom="4dp"
         android:layout_toRightOf="@id/tvUsername"
         android:ellipsize="end"
         android:maxEms="9"
@@ -68,11 +70,63 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="4dp"
+        android:layout_marginStart="8dp"
         android:layout_marginBottom="8dp"
         android:layout_toRightOf="@id/tvTwitterHandle"
         android:text="28d"
         android:textColor="@color/grey"
         android:textSize="16sp"
         android:textStyle="italic" />
+
+    <ImageView
+        android:id="@+id/ivReply"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_below="@id/tvTweet"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="4dp"
+        android:layout_marginBottom="4dp"
+        android:layout_toRightOf="@id/ivProfileImage"
+        app:srcCompat="@drawable/ic_reply" />
+
+    <ImageView
+        android:id="@+id/ivRetweet"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="4dp"
+        android:layout_marginBottom="4dp"
+        android:layout_below="@id/tvTweet"
+        android:layout_toRightOf="@id/ivReply"
+        app:srcCompat="@drawable/ic_retweet"
+        app:tint="@color/grey" />
+
+    <ImageView
+        android:id="@+id/ivHeart"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_below="@id/tvTweet"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="4dp"
+        android:layout_marginBottom="4dp"
+        android:layout_toRightOf="@id/ivRetweet"
+        app:srcCompat="@drawable/ic_heart"
+        app:tint="@color/grey" />
+
+    <ImageView
+        android:id="@+id/ivShare"
+        android:layout_width="25dp"
+        android:layout_height="26dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="4dp"
+        android:layout_marginBottom="4dp"
+        android:layout_below="@id/tvTweet"
+        android:layout_toRightOf="@id/ivHeart"
+        app:srcCompat="@drawable/ic_share"
+        app:tint="@color/grey" />
 
 </RelativeLayout>

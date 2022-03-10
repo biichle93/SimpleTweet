@@ -1,5 +1,7 @@
 package com.codepath.apps.restclienttemplate
 
+import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,8 +13,11 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CircleCrop
 import com.codepath.apps.restclienttemplate.models.Tweet
 
+const val TWEET_EXTRA = "TWEET_EXTRA"
+class TweetsAdapter(private val tweets: MutableList<Tweet>,
+                    private val context: Context)
+    : RecyclerView.Adapter<TweetsAdapter.ViewHolder>() {
 
-class TweetsAdapter(val tweets: MutableList<Tweet>): RecyclerView.Adapter<TweetsAdapter.ViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TweetsAdapter.ViewHolder {
         val context = parent.context
         val inflater = LayoutInflater.from(context)
@@ -36,12 +41,26 @@ class TweetsAdapter(val tweets: MutableList<Tweet>): RecyclerView.Adapter<Tweets
         return tweets.size
     }
 
-    class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
+    inner class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView), View.OnClickListener{
         val profileImage = itemView.findViewById<ImageView>(R.id.ivProfileImage)
         val tweetBody = itemView.findViewById<TextView>(R.id.tvTweet)
         val profileName = itemView.findViewById<TextView>(R.id.tvTwitterHandle)
         val name = itemView.findViewById<TextView>(R.id.tvUsername)
         val timestamp = itemView.findViewById<TextView>(R.id.tvTime)
+
+        init{
+            itemView.setOnClickListener(this)
+        }
+
+        override fun onClick(v: View?) {
+            val tweetClicked = tweets[bindingAdapterPosition]
+            val intent = Intent(context, DetailedActivity::class.java)
+            intent.putExtra("USERNAME", tweetClicked.user?.name)
+            intent.putExtra("HANDLE", tweetClicked.user?.profileName)
+            intent.putExtra("TWEET", tweetClicked.body)
+            intent.putExtra("PROFILE_IMAGE", tweetClicked.user?.profilePictureURL)
+            context.startActivity(intent)
+        }
     }
 
     // Clean all elements of the recycler

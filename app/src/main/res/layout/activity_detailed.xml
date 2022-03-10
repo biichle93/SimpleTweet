@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:backgroundTint="@color/lightgrey"
+    tools:context=".DetailedActivity">
+
+
+    <ImageView
+        android:id="@+id/ivProfileImage"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <TextView
+        android:id="@+id/tvUsername"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="4dp"
+        android:layout_marginBottom="4dp"
+        android:layout_toRightOf="@id/ivProfileImage"
+        android:text="Square Enix"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tvTwitterHandle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvUsername"
+        android:layout_toRightOf="@id/ivProfileImage"
+        android:text="/@Square_Enix"
+        android:textColor="@color/darkgrey"
+        android:textSize="18sp"
+        android:textStyle="italic" />
+
+    <TextView
+        android:id="@+id/tvTweet"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/ivProfileImage"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="2dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:lineSpacingMultiplier="1.1"
+        android:text="Earth-shaking Gigas, airborne Apsaravis and a terrifying dragon are just some of the terrifying creatures you’ll face in  @Forspoken . Find out more here: https://sqex.link/ad43"
+        android:textColor="@color/black"
+        android:textSize="20sp" />
+
+    <ImageView
+        android:id="@+id/ivReply"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_below="@id/tvTweet"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="26dp"
+        app:srcCompat="@drawable/ic_reply" />
+
+    <ImageView
+        android:id="@+id/ivRetweet"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_below="@id/tvTweet"
+        android:layout_marginStart="60dp"
+        android:layout_toRightOf="@id/ivReply"
+        app:tint="@color/grey"
+        app:srcCompat="@drawable/ic_retweet" />
+
+    <ImageView
+        android:id="@+id/ivHeart"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="60dp"
+        android:layout_below="@id/tvTweet"
+        android:layout_toRightOf="@id/ivRetweet"
+        app:tint="@color/grey"
+        app:srcCompat="@drawable/ic_heart" />
+
+    <ImageView
+        android:id="@+id/ivShare"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_below="@id/tvTweet"
+        android:layout_marginStart="60dp"
+        android:layout_toRightOf="@id/ivHeart"
+        app:srcCompat="@drawable/ic_share"
+        app:tint="@color/grey" />
+
+</RelativeLayout>

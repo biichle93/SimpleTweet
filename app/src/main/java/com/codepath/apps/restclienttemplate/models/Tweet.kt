@@ -8,7 +8,7 @@ class Tweet {
     var body: String = ""
     var createdAt: String = ""
     var user: User? = null
-    var timeStamp: String = ""
+    var timeStamp: String = "·"
 
     companion object{
         fun fromJson(jsonObject: JSONObject): Tweet{
@@ -16,7 +16,7 @@ class Tweet {
             tweet.body = jsonObject.getString("full_text")
             tweet.createdAt =jsonObject.getString("created_at")
             tweet.user = User.fromJson(jsonObject.getJSONObject("user"))
-            tweet.timeStamp = getFormattedTimestamp(jsonObject.getString("created_at"))
+            tweet.timeStamp = tweet.timeStamp + getFormattedTimestamp(jsonObject.getString("created_at"))
             return tweet
         }
         fun fromJsonArray(jsonArray: JSONArray): List<Tweet> {

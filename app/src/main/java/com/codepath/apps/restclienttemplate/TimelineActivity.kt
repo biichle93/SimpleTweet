@@ -3,6 +3,7 @@ package com.codepath.apps.restclienttemplate
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import androidx.appcompat.app.ActionBar
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -23,6 +24,10 @@ class TimelineActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_timeline)
+        supportActionBar?.setDisplayShowTitleEnabled(false)
+        supportActionBar?.setDisplayShowHomeEnabled(true)
+        supportActionBar?.setLogo(R.mipmap.ic_launcher)
+        supportActionBar?.setDisplayUseLogoEnabled(true)
         swipeContainer = findViewById(R.id.swipeContainer)
         swipeContainer.setOnRefreshListener {
             populateHomeTimeline()
@@ -37,7 +42,7 @@ class TimelineActivity : AppCompatActivity() {
 
         rvTweets = findViewById(R.id.rvTweets)
         rvTweets.addItemDecoration(DividerItemDecoration(applicationContext, LinearLayoutManager.VERTICAL))
-        adapter = TweetsAdapter(tweets)
+        adapter = TweetsAdapter(tweets, this)
         rvTweets.layoutManager = LinearLayoutManager(this)
         rvTweets.adapter = adapter
         populateHomeTimeline()

@@ -81,11 +81,11 @@
         android:id="@+id/ivHeart"
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:layout_marginStart="60dp"
         android:layout_below="@id/tvTweet"
+        android:layout_marginStart="60dp"
         android:layout_toRightOf="@id/ivRetweet"
-        app:tint="@color/grey"
-        app:srcCompat="@drawable/ic_heart" />
+        app:srcCompat="@drawable/ic_heart"
+        app:tint="@color/grey" />
 
     <ImageView
         android:id="@+id/ivShare"

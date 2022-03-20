@@ -1,8 +1,11 @@
 package com.codepath.apps.restclienttemplate
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.Button
+import android.widget.Toast
 import androidx.appcompat.app.ActionBar
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -26,9 +29,11 @@ class TimelineActivity : AppCompatActivity() {
         setContentView(R.layout.activity_timeline)
         supportActionBar?.setDisplayShowTitleEnabled(false)
         supportActionBar?.setDisplayShowHomeEnabled(true)
-        supportActionBar?.setLogo(R.mipmap.ic_launcher)
+        supportActionBar?.setIcon(R.drawable.t_bird)
         supportActionBar?.setDisplayUseLogoEnabled(true)
         swipeContainer = findViewById(R.id.swipeContainer)
+
+        //swipe container for refresh
         swipeContainer.setOnRefreshListener {
             populateHomeTimeline()
         }
@@ -41,11 +46,29 @@ class TimelineActivity : AppCompatActivity() {
         client = TwitterApplication.getRestClient(this)
 
         rvTweets = findViewById(R.id.rvTweets)
+        val btnTweet = findViewById<Button>(R.id.button)
+
+        btnTweet.setOnClickListener(){
+            Toast.makeText(this, "Button is reached", Toast.LENGTH_SHORT).show()
+            intent = Intent(this, TweetActivity::class.java)
+            startActivityForResult(intent, REQUEST_CODE)
+        }
+
         rvTweets.addItemDecoration(DividerItemDecoration(applicationContext, LinearLayoutManager.VERTICAL))
         adapter = TweetsAdapter(tweets, this)
         rvTweets.layoutManager = LinearLayoutManager(this)
         rvTweets.adapter = adapter
         populateHomeTimeline()
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        if(resultCode == RESULT_OK && requestCode == REQUEST_CODE){
+            val tweet = data?.getParcelableExtra("tweet") as Tweet
+            tweets.add(0, tweet)
+            adapter.notifyItemInserted(0)
+            rvTweets.smoothScrollToPosition(0)
+        }
+        super.onActivityResult(requestCode, resultCode, data)
     }
 
     fun populateHomeTimeline(){
@@ -79,5 +102,6 @@ class TimelineActivity : AppCompatActivity() {
     }
     companion object{
         val TAG = "TimelineActivity"
+        val REQUEST_CODE = 10
     }
 }

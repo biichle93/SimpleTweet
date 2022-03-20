@@ -14,9 +14,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.RestClientTemplateKotlin">
         <activity
+            android:name=".TweetActivity"
+            android:theme="@style/AppBaseTheme"
+            android:exported="false" />
+        <activity
             android:name=".DetailedActivity"
             android:exported="false"
-            android:theme="@style/AppBaseTheme"/>
+            android:theme="@style/AppBaseTheme" />
         <activity
             android:name=".SplashscreenActivity"
             android:exported="true"

@@ -127,6 +127,7 @@
         android:layout_below="@id/tvTweet"
         android:layout_toRightOf="@id/ivHeart"
         app:srcCompat="@drawable/ic_share"
-        app:tint="@color/grey" />
+        app:tint="@color/grey"   />
+
 
 </RelativeLayout>

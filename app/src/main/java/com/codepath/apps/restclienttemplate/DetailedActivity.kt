@@ -12,6 +12,10 @@ class DetailedActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detailed)
         supportActionBar?.title = "Tweet"
+        supportActionBar?.setDisplayShowTitleEnabled(false)
+        supportActionBar?.setDisplayShowHomeEnabled(true)
+        supportActionBar?.setIcon(R.drawable.t_bird)
+        supportActionBar?.setDisplayUseLogoEnabled(true)
 
         val tweet = findViewById<TextView>(R.id.tvTweet)
         val name = findViewById<TextView>(R.id.tvUsername)
